@@ -17,11 +17,10 @@ app.use(bot.webhookCallback(`/bot${process.env.BOT_TOKEN}`));
 
 bot.telegram.sendMessage(
   process.env.MY_TELEGRAM_CHAT_ID ?? 2048189240,
-  `hi123`
+  `Jarvis Bot is started`
 );
 
 app.get("/hello", (req: Request, res: Response) => {
-  console.log(process.env.MY_TELEGRAM_CHAT_ID, process.env.BOT_TOKEN);
   res.send("hello");
 });
 
@@ -29,17 +28,11 @@ app.post("/telegramMsg", (req: Request, res: Response) => {
   const { alertDate, alertText } = req.body;
   if (alertDate && alertText) {
     const date = new Date(alertDate);
-    bot.telegram.sendMessage(
-      process.env.MY_TELEGRAM_CHAT_ID ?? 2048189240,
-      `123`
-    );
-    console.log("data", date);
     scheduleJob(date, function () {
       bot.telegram.sendMessage(
         process.env.MY_TELEGRAM_CHAT_ID ?? 2048189240,
         `It's times to do event ${alertText}`
       );
-      console.log("test", alertText);
     });
     res.send(
       `Created ${alertText} event alert at ${dayjs(date).format(
