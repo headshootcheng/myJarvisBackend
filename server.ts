@@ -15,6 +15,11 @@ bot.telegram.setWebhook(
 );
 app.use(bot.webhookCallback(`/bot${process.env.BOT_TOKEN}`));
 
+bot.telegram.sendMessage(
+  process.env.MY_TELEGRAM_CHAT_ID ?? 2048189240,
+  `hi123`
+);
+
 app.get("/hello", (req: Request, res: Response) => {
   console.log(process.env.MY_TELEGRAM_CHAT_ID, process.env.BOT_TOKEN);
   res.send("hello");
