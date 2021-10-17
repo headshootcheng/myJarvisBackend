@@ -33,11 +33,13 @@ app.post("/telegramMsg", (req: Request, res: Response) => {
       process.env.MY_TELEGRAM_CHAT_ID ?? 2048189240,
       `123`
     );
+    console.log("data", date);
     scheduleJob(date, function () {
       bot.telegram.sendMessage(
         process.env.MY_TELEGRAM_CHAT_ID ?? 2048189240,
         `It's times to do event ${alertText}`
       );
+      console.log("test", alertText);
     });
     res.send(
       `Created ${alertText} event alert at ${dayjs(date).format(
