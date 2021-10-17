@@ -29,6 +29,7 @@ app.post("/telegramMsg", (req: Request, res: Response) => {
   if (alertDate && alertText) {
     const date = new Date(alertDate);
     scheduleJob(date, function () {
+      console.log(`It's times to do event ${alertText}`);
       bot.telegram.sendMessage(
         process.env.MY_TELEGRAM_CHAT_ID ?? 2048189240,
         `It's times to do event ${alertText}`
