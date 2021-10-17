@@ -10,6 +10,7 @@ const port = process.env.PORT ?? 5000;
 app.use(express.json());
 
 app.get("/hello", (req: Request, res: Response) => {
+  console.log(process.env.MY_TELEGRAM_CHAT_ID, process.env.BOT_TOKEN);
   res.send("hello");
 });
 
