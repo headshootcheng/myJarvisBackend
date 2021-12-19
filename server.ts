@@ -21,7 +21,7 @@ bot.telegram.sendMessage(
 );
 
 app.get("/hello", (req: Request, res: Response) => {
-  res.send("hello");
+  res.send("hello123");
 });
 
 app.post("/telegramMsg", (req: Request, res: Response) => {
